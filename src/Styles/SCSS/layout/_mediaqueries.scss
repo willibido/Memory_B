@@ -1,0 +1,52 @@
+@media screen and (max-width: 1280px) {
+    aside.main-container {
+        .clock-container {
+            font-size: 70%;
+
+            .clock {
+                padding: 15px 20px;
+
+                .clock-title {
+                    width: 90px;
+
+                    i {
+                        margin-right: 6px;
+                    }
+
+                    p {
+                        font-size: 1.2em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        padding: 0px;
+
+        .main-container {
+            width: 100%;
+            height: auto;
+            margin: 0px;
+        }
+
+        .box-container {
+            width: 100%;
+            height: auto;
+
+            .box-wrapper {
+                width: 100%;
+
+                // .box {
+                //     margin: 5px;
+                //     width: 8em;
+                //     height: 8em;
+                // }
+            }
+        }    
+    }
+} 

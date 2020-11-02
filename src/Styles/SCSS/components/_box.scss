@@ -1,0 +1,99 @@
+.box-container {
+    .box {
+        width: 10.2em;
+        height: 10.2em;
+        border: $border-green;
+        border-radius: 12px;
+        background-color: none;
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform .1s ease-out;
+        box-shadow: $shadow;
+        
+        &:hover {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+
+        .box-btn {
+            border: $border-green;
+            color: $acid-green;
+            background-color: none;
+            font-size: 1em;
+            padding: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background .2s ease-in-out;
+            transition: padding .1s ease-in-out;
+            opacity: 0.5;
+
+            &:hover {
+                background-color: $acid-green;
+                color: $dark-green;
+                padding: 1.1em;
+                opacity: 1;
+            }
+        }
+        
+        i.box-btn:nth-child(1) {
+            margin-right: 10px;
+        }
+    }
+
+    .ghost {
+        border: dashed 2px $acid-blue;
+        animation: move 1s ease-in-out infinite;
+
+        .box-btn {
+            border-color: $acid-blue;
+            color: $acid-blue;
+
+            &:hover {
+                background-color: $acid-blue;
+                color: $dark-green;
+                padding: 1.1em;
+                opacity: 1;
+            }
+        }
+    }
+
+    .painted {
+        background-color: $yellow;
+        border-color: $dark-yellow;
+        border-style: dashed;
+        border-width: 2px;
+
+        .box-btn {
+            border-color: $dark-yellow;
+            border-width: 1.8px;
+            color: $dark-yellow;
+
+            &:hover {
+                background-color: $dark-yellow;
+                color: $yellow;
+                padding: 1.1em;
+                opacity: 1;
+            }
+        }
+    }
+
+    .ghost-painted {
+        background-color: transparent;
+        border-color: white;
+
+        .box-btn {
+            border-color: #f36d40;
+            border-width: 1.8px;
+            color: #f36d40;
+
+            &:hover {
+                background-color: $yellow;
+                color: $dark-yellow;
+                padding: 1.1em;
+                opacity: 1;
+            }
+        }
+    }
+}

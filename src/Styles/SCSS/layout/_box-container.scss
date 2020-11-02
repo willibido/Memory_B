@@ -1,0 +1,15 @@
+.box-container {
+    width: 76%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .box-wrapper {
+        max-width: 976px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}

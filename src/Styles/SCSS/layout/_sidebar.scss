@@ -1,0 +1,182 @@
+aside.main-container {
+    max-width: 486px;
+    width: 24%;
+    height: 100%;
+    background-color: $light-green;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // LOGO AND HEADER SECTION
+    header {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .logo-wrapper {
+            display: flex;
+
+            .logo {
+                width: 70%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.3em;
+                color: $acid-blue;
+                padding: 25px 67px;
+                border-right: $border;
+
+                i {
+                    margin-right: 20px;
+                    font-size: 1.1em;
+                }
+            }
+
+            .version {
+                width: 30%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.8em;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    // CLOCK SECTION
+    .clock-container {
+        width: 100%;
+        border-bottom: $border;
+        padding:15px;
+
+        .clock {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: $acid-green;
+            color: $dark-green;
+            border-radius: 12px;
+            padding: 15px 30px;
+            height: 100%;
+
+            .clock-title {
+                display: flex;
+                align-items: center;
+                font-size: 0.9em;
+                max-width: 120px;
+                
+                p {
+                    width: 100%;
+                    word-break: break-word;
+                }
+
+                i {
+                    font-size: 1.4em;
+                    margin-right: 20px;
+                }
+            }
+
+            .divider {
+                height: 60%;
+                border-left: 2px dashed $dark-green;
+            }
+
+            .time-wrapp {
+                font-size: 250%;
+            }
+        }
+    }
+
+    // MATCH TABLE
+    .match-table-container {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+        
+        h2 {
+            font-size: 1.1em;
+            margin: 25px 0;
+            align-self: center;
+        }
+        
+        .table {
+            border-radius: 12px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: $dark-green;
+            border: $border-green;
+
+            .stage-title {
+                display: flex;
+                padding: 15px 0;
+                font-size: 1.5em;
+                justify-content: center;
+                border-bottom: $border-green;
+
+                p {
+                    margin: 0 20px;
+                }
+
+                span:nth-child(3) {
+                    margin-right: 20px;
+                }
+            }
+
+            .stats-wrapper {
+                width: 100%;
+                display: flex;
+                padding: 0px 6px;
+                
+
+                .stat {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .title {
+                        font-size: 0.9em;
+                        color: $text-color;
+                        margin: 1.5em 0;
+                    }
+
+                    .outline,
+                    .painted,
+                    .invisibles {
+                        width: 97%;
+                        display: flex;
+                        justify-content: space-between;
+                        background-color: $grey;
+                        padding: 10px 20px;
+                        font-size: 1.1em;
+
+                    }
+                    
+                    span.equal-sing {
+                        margin: 5px 0px;
+                        font-size: 1.8em;
+                    }
+                }
+            }
+
+            h3 {
+                font-size: 0.9em;
+                color: $text-color;
+                margin: 1.5em 0;
+                text-align: center;
+            }
+        }
+    }
+
+    .btn-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        height: 100%;
+
+    }
+}

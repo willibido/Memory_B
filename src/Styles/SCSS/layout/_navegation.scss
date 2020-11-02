@@ -1,0 +1,64 @@
+.navegation {
+    border-top: $border;
+    border-bottom: $border;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 25px 15px;
+    width: 100%;
+    padding: 20px 40px;
+
+    a {
+        text-decoration: none;
+        color: $acid-blue;
+        font-size: 1.2em;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        transition: color 0.2s  ease-in-out;
+
+        &:hover {
+            color: $acid-green;
+        }
+
+        &:hover::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            z-index: 10;
+            width: 10px;
+            height: 10px;
+            background-color:$acid-green;
+            border-radius: 0px 100% 100% 0px;
+            animation:
+                show 0.3s ease-in-out,
+                move 0.8s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: translateX( -5px);
+        opacity: 0;
+    }
+    50% {
+        background-color: white;
+    }
+    100% {
+        opacity: 1;        
+    }
+}
+
+@keyframes move {
+    0% {
+        transform: translateX( 0px);
+    }
+    50% {
+        transform: translateX( 5px);       
+    }
+    100% {
+        transform: translateX( 0px);       
+    }
+}
