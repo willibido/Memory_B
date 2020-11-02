@@ -284,21 +284,24 @@ class Box extends UI {
 // FUNCTION FOR CHECK A MATCH
 const matchChecker = () => {
     let outlineMatch, paintedMatch, invisiblesMatch;
-    
+    // Comprueba si la cantidad de cajas con el estilo de linea (outline) es igual a la cantidad del reto 
     if (outlineCountSelected.textContent === outlineCountStage.textContent) {
         outlineMatch = true;
     }
 
+    // Comprueba si la cantidad de cajas con el estilo pintadas (painted) es igual a la cantidad del reto
     if (paintedCountSelected.textContent === paintedCountStage.textContent) {
         paintedMatch = true;
     }
 
+    // Comprueba si la cantidad de cajas con el estilo invisible es igual a la cantidad del reto
     if (invisibleCountSelected.textContent === invisibleCountStage.textContent) {
         invisiblesMatch = true;
     }
 
+    // Si las cantidades de las cajas son iguales (la condicion es verdadera) 
     if (outlineMatch && paintedMatch && invisiblesMatch) {
-        const ui = new UI;
+        const ui = new UI; // Se llama la clase UI para mostrar el puntaje y el mensaje de reto completado
         console.table("MATCH! YOU WIN BITCH", `STAGE: ${challengeIndex + 1}`, Math.abs(Number(secondsIndicator.innerText) - stage[challengeIndex].time), "SECONDS");
         stopChallengeTime();
         ui.modalWinChallenge();
@@ -323,7 +326,7 @@ const principalBtnAction = () => {
     }
 }
 
-// PRINCIPAL BUTTOM LISTENER
+// PRINCIPAL BUTTOM
 document.getElementById('btn-principal').addEventListener('click', () => {
     principalBtnAction()
 });
