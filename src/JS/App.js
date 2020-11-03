@@ -113,6 +113,7 @@ class UI {
     }
 
     modalLooseChallenge(cssClass) {
+        // Trabajando con los modals
         mainModalContainer.innerHTML = `
             <div class="modal" id="modalContainer">
                 <div class="modal-component ${cssClass}">
