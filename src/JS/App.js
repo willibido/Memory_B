@@ -16,12 +16,22 @@ let outlineCountSelected = document.getElementById('outline-count-selected'),
     invisibleCountSelected = document.getElementById('invisibles-count-selected');
 
 const minutesIndicator = document.getElementById('time-minutes'),
-    secondsIndicator = document.getElementById('time-seconds'),
-    initialCounterIndicator = document.querySelector('.initial-time-indicador');
+    secondsIndicator = document.getElementById('time-seconds');
 
 const mainModalContainer = document.getElementById('mainModalContainer');
 const modalContainer = document.getElementById('modalContainer');
+
+mainModalContainer.innerHTML = `
+    <div class="modal" id="modalContainer">
+        <div class="modal-component" id="initialTime">
+            <h3>Seconds Remaining</h3>
+            <span class="initial-time-indicador">00</span>
+        </div>
+    </div>
+`;
+
 const initialTimeModal = document.getElementById('initialTime');
+let initialCounterIndicator = document.querySelector('.initial-time-indicador');
 
 // WORKING WITH THE CHALLENGE PROPIETIES
 stage = [
@@ -29,19 +39,19 @@ stage = [
         "outline": 6,
         "painted": 6,
         "ghost": 0,
-        "time": 100
+        "time": 5
     },
     {
         "outline": 11,
         "painted": 1,
         "ghost": 0,
-        "time": 100
+        "time": 5
     },
     {
         "outline": 5,
         "painted": 5,
         "ghost": 2,
-        "time": 100
+        "time": 5
     }
 ];
 
@@ -84,7 +94,7 @@ class UI {
         invisibleCountStage.textContent = "0";
         stageIndicator.textContent = "00"
 
-        initialCounterIndicator.textContent = "00";
+        initialCounterIndicator.textContent = "00"; // Contador del modal inicial
         secondsIndicator.textContent = "00";
 
         document.querySelector('.start-sing').style.display = "none";
@@ -96,15 +106,33 @@ class UI {
                 element[i].remove();
             }
         }
+
         clearBoxes();
     }
 
+    // MODALS ===================================================================
+    
+    /* Estructura basica de un modal
+    
+    mainModalContainer.innerHTML = `
+        <div class="modal" id="** ESPESIFICAR ID **">
+            <div class="modal-component" id="** ESPESIFICAR ID **">
+                // ** CONTENIDO DEL MODAL **
+            </div>
+        </div>
+    `;
+
+    Animaciones: 
+    .hide // Aplicar solo al mainModalContainer
+    .fadein 
+    .fadeout
+        
+    */
+
     modalInitialTime() {
         initialTimeModal.classList.remove('hide');
-        initialTimeModal.classList.toggle('fadein');
-
+        initialTimeModal.classList.add('fadein');
         initialTimeModal.classList.remove('fadeout');
-
         mainModalContainer.classList.toggle('hide');
     }
 
@@ -112,25 +140,8 @@ class UI {
         alert("HAS GANADO EL DESAFIO");
     }
 
-    modalLooseChallenge(cssClass) {
-        mainModalContainer.innerHTML = `
-            <div class="modal" id="modalContainer">
-                <div class="modal-component ${cssClass}">
-                    <h3>YOU LOOSE THE CHALLENGE</h3>
-                    <button class="btn" id="closeBtn">CLOSE</button>
-                </div>
-            </div>    
-        `;
-
-        document.getElementById('closeBtn').addEventListener('click', () => {
-            document.querySelector('.modal-component').classList.add('fadeout');
-            setTimeout(() => {
-                document.querySelector('.modal-component').classList.add('hide');
-                mainModalContainer.classList.add('hide');
-            }, 500);
-        });
-
-        mainModalContainer.classList.remove('hide');
+    modalLooseChallenge() {
+        alert("Has perdido el juego")
     }
 }
 
