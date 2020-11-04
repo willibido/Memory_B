@@ -27,19 +27,19 @@ stage = [
         "outline": 6,
         "painted": 6,
         "ghost": 0,
-        "time": 5
+        "time": 59
     },
     {
         "outline": 11,
         "painted": 1,
         "ghost": 0,
-        "time": 5
+        "time": 59
     },
     {
         "outline": 5,
         "painted": 5,
         "ghost": 2,
-        "time": 5
+        "time": 59
     }
 ];
 
@@ -116,11 +116,12 @@ class UI {
         
     */
 
+    // Ventana modal que aparece con un contador de 5 segundos antes de iniciar un nuevo partido
     modalInitialTime() {
         const initialTimeModalStructure = `
             <div class="modal" id="modalContainer">
                 <div class="modal-component hide" id="initialTime">
-                    <h3>Seconds Remaining</h3>
+                    <h3>SECONDS REMAINING</h3>
                     <span class="initial-time-indicador">00</span>
                 </div>
             </div>
@@ -139,13 +140,55 @@ class UI {
         }, 5500);
     }
 
+    // Ventana modal que aparece cuando has ganado el juego
     modalWinChallenge() {
-        alert("HAS GANADO EL DESAFIO");
+        // alert("HAS GANADO EL DESAFIO");
+
+        mainModalContainer.innerHTML = `
+            <div class="modal" id="modal_container">
+                <div class="modal-component hide" id="winChallengeModal">
+                    <h3>YOU WIN THE CHALLENGE!!</h3>
+                    <button class="btn" id="try-again-btn-win">NEXT STAGE</button>
+                    <button class="btn" id="finish-game-btn-win">FINISH GAME</button>
+                </div>
+            </div>
+        `;
+
+        const winChallengeModal = document.getElementById('winChallengeModal');
+        
+        mainModalContainer.classList.remove('hide');
+        winChallengeModal.classList.remove('hide');
+        winChallengeModal.classList.add('fadein');
+
+        // Listeners de los botones del modal
+
+        // Evento que activa la opcion de CONTINUAR
+        document.querySelector('#try-again-btn-win').addEventListener('click', () => {
+            winChallengeModal.classList.remove('fadein');
+            winChallengeModal.classList.add('fadeout');
+            
+            setTimeout(() => {
+                winChallengeModal.classList.add('hide');
+            
+                principalBtnAction();
+            
+            }, 500)
+        });
+
+        // Evento que activa la opcion de abandonar la partida
+        document.querySelector('#finish-game-btn-win').addEventListener('click', () => {
+            winChallengeModal.classList.remove('fadein');
+            winChallengeModal.classList.add('fadeout');
+            
+            setTimeout(() => {
+                winChallengeModal.classList.add('hide');
+                mainModalContainer.classList.add('hide');
+            }, 500)
+        });
     }
 
+    // Ventana modal que aparece cuando has perdido el juego
     modalLooseChallenge() {
-        // alert("Has perdido el juego")
-
         mainModalContainer.innerHTML = `
             <div class="modal" id="modal_container">
                 <div class="modal-component hide" id="looseChallengeModal">
@@ -163,7 +206,8 @@ class UI {
         looseChallengeModal.classList.add('fadein');
 
         // Listeners de los botones del modal
-        // Evento del boton intentar nuevamente (TRY AGAIN)
+
+        // Evento que activa la opcion de intentar nuevamente
         document.querySelector('#try-again-btn').addEventListener('click', () => {
             looseChallengeModal.classList.remove('fadein');
             looseChallengeModal.classList.add('fadeout');
@@ -176,6 +220,7 @@ class UI {
             }, 500)
         });
 
+        // Evento que activa la opcion de abandonar la partida
         document.querySelector('#finish-game-btn').addEventListener('click', () => {
             looseChallengeModal.classList.remove('fadein');
             looseChallengeModal.classList.add('fadeout');
