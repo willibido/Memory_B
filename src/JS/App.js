@@ -21,18 +21,6 @@ const minutesIndicator = document.getElementById('time-minutes'),
 const mainModalContainer = document.getElementById('mainModalContainer');
 const modalContainer = document.getElementById('modalContainer');
 
-mainModalContainer.innerHTML = `
-    <div class="modal" id="modalContainer">
-        <div class="modal-component" id="initialTime">
-            <h3>Seconds Remaining</h3>
-            <span class="initial-time-indicador">00</span>
-        </div>
-    </div>
-`;
-
-const initialTimeModal = document.getElementById('initialTime');
-let initialCounterIndicator = document.querySelector('.initial-time-indicador');
-
 // WORKING WITH THE CHALLENGE PROPIETIES
 stage = [
     {
@@ -94,6 +82,18 @@ class UI {
         invisibleCountStage.textContent = "0";
         stageIndicator.textContent = "00"
 
+        mainModalContainer.innerHTML = `
+            <div class="modal" id="modalContainer">
+                <div class="modal-component hide" id="initialTime">
+                    <h3>Seconds Remaining</h3>
+                    <span class="initial-time-indicador">00</span>
+                </div>
+            </div>
+        `;
+
+        const initialTimeModal = document.getElementById('initialTime');
+        let initialCounterIndicator = document.querySelector('.initial-time-indicador');
+
         initialCounterIndicator.textContent = "00"; // Contador del modal inicial
         secondsIndicator.textContent = "00";
 
@@ -141,7 +141,35 @@ class UI {
     }
 
     modalLooseChallenge() {
-        alert("Has perdido el juego")
+        // alert("Has perdido el juego")
+
+        mainModalContainer.innerHTML = `
+            <div class="modal" id="modal_container">
+                <div class="modal-component hide" id="looseChallengeModal">
+                    <h3>YOU LOOSE THE CHALLENGE</h3>
+                    <button class="btn" id="try-again-btn">TRY AGAIN</button>
+                    <button class="btn" id="finish-game-btn">FINISH GAME</button>
+                </div>
+            </div>
+        `;
+
+        const looseChallengeModal = document.getElementById('looseChallengeModal');
+        
+        mainModalContainer.classList.remove('hide');
+        looseChallengeModal.classList.remove('hide');
+        looseChallengeModal.classList.add('fadein');
+
+        document.querySelector('#finish-game-btn').addEventListener('click', () => {
+            console.log('Funciona el boton del modal');
+            looseChallengeModal.classList.remove('fadein');
+            
+            looseChallengeModal.classList.add('fadeout');
+            looseChallengeModal.classList.add('hide');
+            
+            setTimeout(() => {
+                mainModalContainer.classList.add('hide');
+            }, 500)
+        })
     }
 }
 
