@@ -130,14 +130,13 @@ class UI {
         
         const initialTimeModal = document.getElementById('initialTime');
 
+        mainModalContainer.classList.remove('hide');
         initialTimeModal.classList.remove('hide');
         initialTimeModal.classList.add('fadein');
 
         setTimeout(() => {
             initialTimeModal.classList.add('fadeout');
         }, 5500);
-
-        mainModalContainer.classList.toggle('hide');
     }
 
     modalWinChallenge() {
@@ -163,17 +162,29 @@ class UI {
         looseChallengeModal.classList.remove('hide');
         looseChallengeModal.classList.add('fadein');
 
-        document.querySelector('#finish-game-btn').addEventListener('click', () => {
-            console.log('Funciona el boton del modal');
+        // Listeners de los botones del modal
+        // Evento del boton intentar nuevamente (TRY AGAIN)
+        document.querySelector('#try-again-btn').addEventListener('click', () => {
             looseChallengeModal.classList.remove('fadein');
+            looseChallengeModal.classList.add('fadeout');
             
+            setTimeout(() => {
+                looseChallengeModal.classList.add('hide');
+            
+                principalBtnAction();
+            
+            }, 500)
+        });
+
+        document.querySelector('#finish-game-btn').addEventListener('click', () => {
+            looseChallengeModal.classList.remove('fadein');
             looseChallengeModal.classList.add('fadeout');
             
             setTimeout(() => {
                 looseChallengeModal.classList.add('hide');
                 mainModalContainer.classList.add('hide');
             }, 500)
-        })
+        });
     }
 }
 
@@ -200,6 +211,7 @@ const timeCounter = (elementInterval) => {
             // Muestra el modal que contiene el tiempo inicial
             const ui = new UI;
             ui.modalInitialTime();
+            mainModalContainer.classList.add('hide');
 
             // FUNCION PARA PINTAR LOS ELEMENTOS EN PANTALLA
             principalElementsRender();
@@ -367,5 +379,5 @@ const principalBtnAction = () => {
 
 // PRINCIPAL BUTTOM
 document.getElementById('btn-principal').addEventListener('click', () => {
-    principalBtnAction()
+    principalBtnAction();
 });
