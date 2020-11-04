@@ -82,19 +82,6 @@ class UI {
         invisibleCountStage.textContent = "0";
         stageIndicator.textContent = "00"
 
-        mainModalContainer.innerHTML = `
-            <div class="modal" id="modalContainer">
-                <div class="modal-component hide" id="initialTime">
-                    <h3>Seconds Remaining</h3>
-                    <span class="initial-time-indicador">00</span>
-                </div>
-            </div>
-        `;
-
-        const initialTimeModal = document.getElementById('initialTime');
-        let initialCounterIndicator = document.querySelector('.initial-time-indicador');
-
-        initialCounterIndicator.textContent = "00"; // Contador del modal inicial
         secondsIndicator.textContent = "00";
 
         document.querySelector('.start-sing').style.display = "none";
@@ -130,9 +117,26 @@ class UI {
     */
 
     modalInitialTime() {
+        const initialTimeModalStructure = `
+            <div class="modal" id="modalContainer">
+                <div class="modal-component hide" id="initialTime">
+                    <h3>Seconds Remaining</h3>
+                    <span class="initial-time-indicador">00</span>
+                </div>
+            </div>
+        `;
+
+        mainModalContainer.innerHTML = `${initialTimeModalStructure}`;
+        
+        const initialTimeModal = document.getElementById('initialTime');
+
         initialTimeModal.classList.remove('hide');
         initialTimeModal.classList.add('fadein');
-        initialTimeModal.classList.remove('fadeout');
+
+        setTimeout(() => {
+            initialTimeModal.classList.add('fadeout');
+        }, 5500);
+
         mainModalContainer.classList.toggle('hide');
     }
 
@@ -164,9 +168,9 @@ class UI {
             looseChallengeModal.classList.remove('fadein');
             
             looseChallengeModal.classList.add('fadeout');
-            looseChallengeModal.classList.add('hide');
             
             setTimeout(() => {
+                looseChallengeModal.classList.add('hide');
                 mainModalContainer.classList.add('hide');
             }, 500)
         })
@@ -177,6 +181,7 @@ class UI {
 // F1- START TIME COUNTER
 const timeCounter = (elementInterval) => {
     let startTime = 5;
+    let initialCounterIndicator = document.querySelector('.initial-time-indicador');
     InitialCounterIsRuning = true; // Esta variable conprueba si el tiempo ya ha iniciado y la funcion se ha ejecutado
 
     stopInicialTime = () => {
@@ -186,11 +191,6 @@ const timeCounter = (elementInterval) => {
     }
 
     elementInterval = setInterval(() => {
-        if (startTime == 1) {
-            setTimeout(() => {
-                initialTimeModal.classList.toggle('fadeout');
-            }, 500);
-        }
 
         if (startTime <= 0) {
             
@@ -231,7 +231,7 @@ const challengeTime = (elementInterval, time) => {
             challengeTimeIsRuning = false;
             
             ui.resetStats();
-            ui.modalLooseChallenge('fadein');
+            ui.modalLooseChallenge();
         } else {
             secondsIndicator.textContent = `${startTime--}`;
         }
