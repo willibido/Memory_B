@@ -84,7 +84,8 @@ class UI {
 
         secondsIndicator.textContent = "00";
 
-        document.querySelector('.start-sing').style.display = "none";
+        document.querySelector('.start-sing').style.display = "block";
+        document.querySelector('.start-sing').textContent = "PRESS START BUTTON";
 
         const clearBoxes = () => {
             let element = boxWrapper.querySelectorAll(".box");
@@ -142,8 +143,6 @@ class UI {
 
     // Ventana modal que aparece cuando has ganado el juego
     modalWinChallenge() {
-        // alert("HAS GANADO EL DESAFIO");
-
         mainModalContainer.innerHTML = `
             <div class="modal" id="modal_container">
                 <div class="modal-component hide" id="winChallengeModal">
@@ -315,7 +314,8 @@ const principalElementsRender = () => {
     );
 
     document.querySelector('#outline-count-selected').textContent = boxWrapper.querySelectorAll('.box').length;
-    
+    document.querySelector('.start-sing').style.display = "none";
+
     challengeTime(null, stage[challengeIndex].time);
 }
 
