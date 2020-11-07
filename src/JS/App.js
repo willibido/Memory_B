@@ -57,12 +57,24 @@ class UI {
         
         invisibleCountSelected.textContent = boxWrapper.querySelectorAll('.ghost').length;
         let invisiblesCount = boxWrapper.querySelectorAll('.ghost').length;
-        
-        if (boxWrapper.querySelectorAll(".ghost-painted").length >= 1) {
-            outlineCountSelected.textContent = ((boxWrapper.querySelectorAll('.box').length - paintedCount) - invisiblesCount) + 1;
-        } else {
-            outlineCountSelected.textContent = (boxWrapper.querySelectorAll('.box').length - paintedCount) - invisiblesCount;
-        }
+
+        outlineCountSelected.textContent = boxWrapper.querySelectorAll('.outline').length;
+
+        // if (boxWrapper.querySelectorAll(".ghost" + ".painted").length > 2) {
+        //     console.log("PRIMERO");
+        //     outlineCountSelected.textContent = boxWrapper.querySelectorAll('.box').length - (paintedCount + invisiblesCount);
+        // } else {
+        //     console.log("SEGUNDO");
+        //     outlineCountSelected.textContent = (boxWrapper.querySelectorAll('.box').length - paintedCount) - invisiblesCount;
+        // }
+
+        // if (boxWrapper.querySelectorAll(".ghost-painted").length > 0) {
+        //     console.log("PRIMERO");
+        //     outlineCountSelected.textContent = (boxWrapper.querySelectorAll('.box').length - paintedCount);
+        // } else {
+        //     console.log("SEGUNDO");
+        //     outlineCountSelected.textContent = (boxWrapper.querySelectorAll('.box').length - paintedCount) - invisiblesCount;
+        // }
     }
 
     statsStage(outline, painted, invisibles, stage) {
@@ -86,6 +98,8 @@ class UI {
 
         document.querySelector('.start-sing').style.display = "block";
         document.querySelector('.start-sing').textContent = "PRESS START BUTTON";
+        
+        document.getElementById('btn-principal').textContent = "START";
 
         const clearBoxes = () => {
             let element = boxWrapper.querySelectorAll(".box");
@@ -351,7 +365,7 @@ class Box extends UI {
         box.appendChild(btn_color);
         box.appendChild(btn_ghost);
 
-        box.classList = "box";
+        box.classList = "box outline";
 
         //RETURN THE BOX COMPONENT
         return box;
@@ -360,19 +374,29 @@ class Box extends UI {
     //TOGGLE THE BACKGROUND COLOR OF THE ELEMENT (CLASS .PAINTED)
     changeColor(element){
         element.classList.toggle("painted");
+        this.outlineCheck(element);
     }
 
     //TOGGLE THE .GHOST CLASS FOR THE ELEMENT
     ghostSwitch(element){
         element.classList.toggle("ghost");
+        this.outlineCheck(element);
     }
 
     //THIS FUNCTION CHECK IF THE ELEMENT HAVE THE CLASSES GHOST AND PAINTED, AND ADD THE CLASS GHOST-PAINTED
     ghostPaintedState(element){
         if (element.classList.contains("ghost") && element.classList.contains("painted")) {
-            element.classList = "box ghost painted ghost-painted";
+            element.classList.add("ghost-painted");
         } else {
             element.classList.remove("ghost-painted");
+        }
+    }
+
+    outlineCheck(element){
+        if (element.classList.contains("ghost") || element.classList.contains("painted")) {
+            element.classList.remove("outline");
+        } else {
+            element.classList.add("outline");
         }
     }
 }
@@ -419,7 +443,9 @@ const principalBtnAction = () => {
         ui.modalInitialTime();
         timeCounter();
         console.log(InitialCounterIsRuning);
+        document.getElementById('btn-principal').textContent = "STOP";
     }
+
 }
 
 // PRINCIPAL BUTTOM
