@@ -1,0 +1,55 @@
+.score-content {
+
+    h2 {
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .table-header {
+        color: #fff;
+        width: 100%;
+        border: $border-green;
+
+        thead {
+            width: 100%;        
+
+            tr {
+                width: 100%;
+
+                th {
+                    width: 50%;
+                    padding: 10px;
+                    background: $acid-green;
+                    color: $dark-green;
+                }
+            }
+        }
+    }
+
+    .table-container {
+        overflow: auto;
+        max-height: 550px;
+        border: $border-green;
+
+        table {
+            width: 100%;
+
+            tbody {
+                width: 100%;
+                text-align: center;
+                
+                tr {
+                    width: 100%;
+    
+                    td {
+                        width: 50%;
+                        padding: 5px;
+                        border: $border-green;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
