@@ -61,12 +61,23 @@ h2 {
     transform: translateY(-200px);
   }
 }
+@keyframes blink {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
 aside.main-container {
   max-width: 486px;
   width: 24%;
   height: 100%;
   background-color: #1E331D;
-  margin-right: 40px;
+  margin-left: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +98,7 @@ aside.main-container header .logo-wrapper .logo {
   font-size: 1.3em;
   color: #3EEDFF;
   padding: 25px 67px;
-  border-right: 2px solid #fff;
+  border-right: 2px solid rgba(255, 255, 255, 0.5);
 }
 aside.main-container header .logo-wrapper .logo i {
   margin-right: 20px;
@@ -103,15 +114,16 @@ aside.main-container header .logo-wrapper .version {
 }
 aside.main-container .clock-container {
   width: 100%;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   padding: 15px;
 }
 aside.main-container .clock-container .clock {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #07E423;
-  color: #142112;
+  background-color: #142112;
+  color: #07E423;
+  border: 1px solid #07E423;
   border-radius: 12px;
   padding: 15px 30px;
   height: 100%;
@@ -132,7 +144,7 @@ aside.main-container .clock-container .clock .clock-title i {
 }
 aside.main-container .clock-container .clock .divider {
   height: 60%;
-  border-left: 2px dashed #142112;
+  border-left: 2px dashed #07E423;
 }
 aside.main-container .clock-container .clock .time-wrapp {
   font-size: 250%;
@@ -199,6 +211,18 @@ aside.main-container .match-table-container .table .stats-wrapper .stat span.equ
   margin: 5px 0px;
   font-size: 1.8em;
 }
+aside.main-container .match-table-container .table .stats-wrapper .stat .outline.stage-mark {
+  background-color: #07E423;
+  color: #142112;
+}
+aside.main-container .match-table-container .table .stats-wrapper .stat .painted.stage-mark {
+  background-color: #FFFF7B;
+  color: #142112;
+}
+aside.main-container .match-table-container .table .stats-wrapper .stat .invisibles.stage-mark {
+  background-color: #3EEDFF;
+  color: #142112;
+}
 aside.main-container .match-table-container .table h3 {
   font-size: 0.9em;
   color: #DCDCDC;
@@ -219,13 +243,13 @@ aside.main-container .btn-wrapper {
   max-width: 1920px;
   padding: 40px;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
 }
 .container .main-container,
 .container .box-container {
   border-radius: 16px;
-  border: 2px solid #fff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
   box-shadow: 8px 8px 0px rgba(16, 26, 16, 0.5);
 }
 
@@ -243,10 +267,14 @@ aside.main-container .btn-wrapper {
   justify-content: center;
   align-items: center;
 }
+.box-container .box-wrapper .start-sing {
+  animation: blink 1.5s infinite;
+  font-size: 1.5em;
+}
 
 .navegation {
-  border-top: 2px solid #fff;
-  border-bottom: 2px solid #fff;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -262,19 +290,17 @@ aside.main-container .btn-wrapper {
   display: flex;
   align-items: center;
   transition: color 0.2s ease-in-out;
+  opacity: 0.6;
 }
 .navegation a:hover {
   color: #07E423;
+  opacity: 1;
 }
 .navegation a:hover::before {
-  content: "";
+  content: url(../ASSETS/icons/Polygon.svg);
   position: absolute;
   left: -20px;
   z-index: 10;
-  width: 10px;
-  height: 10px;
-  background-color: #07E423;
-  border-radius: 0px 100% 100% 0px;
   animation: show 0.3s ease-in-out, move 0.8s ease-in-out infinite;
 }
 
@@ -282,9 +308,6 @@ aside.main-container .btn-wrapper {
   0% {
     transform: translateX(-5px);
     opacity: 0;
-  }
-  50% {
-    background-color: white;
   }
   100% {
     opacity: 1;
@@ -305,7 +328,7 @@ aside.main-container .btn-wrapper {
   width: 90%;
   height: 50px;
   padding: 10px 0;
-  border: none;
+  border: 2px solid #4aff62;
   border-radius: 6px;
   font-size: 1.5em;
   color: #142112;
@@ -323,31 +346,44 @@ aside.main-container .btn-wrapper {
   left: 0%;
   top: 0%;
   right: 0%;
-  border-radius: 8px;
+  border-radius: 6px;
   width: 100%;
   height: 100%;
   background-color: white;
   opacity: 0;
-  animation: btnshow 0.8s ease infinite;
-  animation-delay: 0.3s;
+  animation: btnshow 1.5s ease infinite;
+  filter: invert(100%);
+}
+.btn:focus::before {
+  content: "";
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0;
+  animation: btnshow 1.5s ease infinite;
+  filter: invert(100%);
+}
+
+.btn-warning {
+  background-color: #4e1515;
+  border: 1px solid #ce2b2b;
+  color: #e73c3c;
 }
 
 @keyframes btnshow {
   0% {
     opacity: 0;
   }
-  20% {
-    transform: scaleX(0);
-  }
   60% {
-    opacity: 0.3;
-  }
-  80% {
-    opacity: 0;
+    opacity: 0.6;
   }
   100% {
     opacity: 0;
-    transform: scaleX(1);
   }
 }
 .box-container .box {
@@ -460,7 +496,7 @@ aside.main-container .btn-wrapper {
   flex-direction: column;
   background-color: #142112;
   width: 50em;
-  border: 2px solid #fff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 0.5em;
   padding: 2.5em;
   margin-bottom: 2em;

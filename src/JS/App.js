@@ -24,22 +24,28 @@ const modalContainer = document.getElementById('modalContainer');
 // WORKING WITH THE CHALLENGE PROPIETIES
 stage = [
     {
-        "outline": 6,
-        "painted": 6,
-        "ghost": 0,
+        "outline": 0,
+        "painted": 11,
+        "ghost": 1,
         "time": 59
+    },
+    {
+        "outline": 8,
+        "painted": 4,
+        "ghost": 4,
+        "time": 30
+    },
+    {
+        "outline": 10,
+        "painted": 2,
+        "ghost": 2,
+        "time": 20
     },
     {
         "outline": 11,
         "painted": 1,
-        "ghost": 0,
-        "time": 59
-    },
-    {
-        "outline": 5,
-        "painted": 5,
-        "ghost": 2,
-        "time": 59
+        "ghost": 1,
+        "time": 10
     }
 ];
 
@@ -53,28 +59,10 @@ class UI {
     //FUNCTION FOR COUNT THE NUMBER OF BOXES DEPENDING HIS CLASS
     stats(){
         paintedCountSelected.textContent = boxWrapper.querySelectorAll('.painted').length;
-        let paintedCount = paintedCountSelected.textContent = boxWrapper.querySelectorAll('.painted').length;
         
         invisibleCountSelected.textContent = boxWrapper.querySelectorAll('.ghost').length;
-        let invisiblesCount = boxWrapper.querySelectorAll('.ghost').length;
 
         outlineCountSelected.textContent = boxWrapper.querySelectorAll('.outline').length;
-
-        // if (boxWrapper.querySelectorAll(".ghost" + ".painted").length > 2) {
-        //     console.log("PRIMERO");
-        //     outlineCountSelected.textContent = boxWrapper.querySelectorAll('.box').length - (paintedCount + invisiblesCount);
-        // } else {
-        //     console.log("SEGUNDO");
-        //     outlineCountSelected.textContent = (boxWrapper.querySelectorAll('.box').length - paintedCount) - invisiblesCount;
-        // }
-
-        // if (boxWrapper.querySelectorAll(".ghost-painted").length > 0) {
-        //     console.log("PRIMERO");
-        //     outlineCountSelected.textContent = (boxWrapper.querySelectorAll('.box').length - paintedCount);
-        // } else {
-        //     console.log("SEGUNDO");
-        //     outlineCountSelected.textContent = (boxWrapper.querySelectorAll('.box').length - paintedCount) - invisiblesCount;
-        // }
     }
 
     statsStage(outline, painted, invisibles, stage) {
@@ -96,10 +84,15 @@ class UI {
 
         secondsIndicator.textContent = "00";
 
+        document.querySelector(".painted").classList.remove("stage-mark");
+        document.querySelector(".outline").classList.remove("stage-mark");
+        document.querySelector(".invisibles").classList.remove("stage-mark");
+
         document.querySelector('.start-sing').style.display = "block";
-        document.querySelector('.start-sing').textContent = "PRESS START BUTTON";
+        document.querySelector('.start-sing').textContent = "PRESS (START) BUTTON";
         
         document.getElementById('btn-principal').textContent = "START";
+        document.getElementById('btn-principal').classList = "btn";
 
         const clearBoxes = () => {
             let element = boxWrapper.querySelectorAll(".box");
@@ -131,7 +124,7 @@ class UI {
         
     */
 
-    // Ventana modal que aparece con un contador de 5 segundos antes de iniciar un nuevo partido
+    // Ventana modal que aparece con un contador de 3 segundos antes de iniciar un nuevo partido
     modalInitialTime() {
         const initialTimeModalStructure = `
             <div class="modal" id="modalContainer">
@@ -152,7 +145,7 @@ class UI {
 
         setTimeout(() => {
             initialTimeModal.classList.add('fadeout');
-        }, 5500);
+        }, 3500);
     }
 
     // Ventana modal que aparece cuando has ganado el juego
@@ -162,7 +155,7 @@ class UI {
                 <div class="modal-component hide" id="winChallengeModal">
                     <h3>YOU WIN THE CHALLENGE!!</h3>
                     <button class="btn" id="try-again-btn-win">NEXT STAGE</button>
-                    <button class="btn" id="finish-game-btn-win">FINISH GAME</button>
+                    <button class="btn btn-warning" id="finish-game-btn-win">FINISH GAME</button>
                 </div>
             </div>
         `;
@@ -207,7 +200,7 @@ class UI {
                 <div class="modal-component hide" id="looseChallengeModal">
                     <h3>YOU LOOSE THE CHALLENGE</h3>
                     <button class="btn" id="try-again-btn">TRY AGAIN</button>
-                    <button class="btn" id="finish-game-btn">FINISH GAME</button>
+                    <button class="btn btn-warning" id="finish-game-btn">FINISH GAME</button>
                 </div>
             </div>
         `;
@@ -249,7 +242,7 @@ class UI {
 // ---- WORKING WITH THE TIME ----//
 // F1- START TIME COUNTER
 const timeCounter = (elementInterval) => {
-    let startTime = 5;
+    let startTime = 3;
     let initialCounterIndicator = document.querySelector('.initial-time-indicador');
     InitialCounterIsRuning = true; // Esta variable conprueba si el tiempo ya ha iniciado y la funcion se ha ejecutado
 
@@ -401,28 +394,37 @@ class Box extends UI {
     }
 }
 
-// FUNCTION FOR CHECK A MATCH
+// FUNCTION FOR CHECK A MATCH =================================================================
 const matchChecker = () => {
     let outlineMatch, paintedMatch, invisiblesMatch;
     // Comprueba si la cantidad de cajas con el estilo de linea (outline) es igual a la cantidad del reto 
     if (outlineCountSelected.textContent === outlineCountStage.textContent) {
-        outlineMatch = true;
+        outlineMatch = true;    
+        document.querySelector(".outline").classList.add("stage-mark");
+    } else {
+        document.querySelector(".outline").classList.remove("stage-mark");
     }
 
     // Comprueba si la cantidad de cajas con el estilo pintadas (painted) es igual a la cantidad del reto
     if (paintedCountSelected.textContent === paintedCountStage.textContent) {
         paintedMatch = true;
+        document.querySelector(".painted").classList.add("stage-mark");
+    } else {
+        document.querySelector(".painted").classList.remove("stage-mark");
     }
 
     // Comprueba si la cantidad de cajas con el estilo invisible es igual a la cantidad del reto
     if (invisibleCountSelected.textContent === invisibleCountStage.textContent) {
         invisiblesMatch = true;
+        document.querySelector(".invisibles").classList.add("stage-mark");
+    } else {
+        document.querySelector(".invisibles").classList.remove("stage-mark");
     }
 
     // Si las cantidades de las cajas son iguales (la condicion es verdadera) 
     if (outlineMatch && paintedMatch && invisiblesMatch) {
         const ui = new UI; // Se llama la clase UI para mostrar el puntaje y el mensaje de reto completado
-        console.table("MATCH! YOU WIN BITCH", `STAGE: ${challengeIndex + 1}`, Math.abs(Number(secondsIndicator.innerText) - stage[challengeIndex].time), "SECONDS");
+        console.log("MATCH! YOU WIN BITCH", `STAGE: ${challengeIndex + 1}` + " - TIME: " + Math.abs(Number(secondsIndicator.innerText) - stage[challengeIndex].time), "SECONDS");
         stopChallengeTime();
         ui.modalWinChallenge();
     }
@@ -443,9 +445,10 @@ const principalBtnAction = () => {
         ui.modalInitialTime();
         timeCounter();
         console.log(InitialCounterIsRuning);
-        document.getElementById('btn-principal').textContent = "STOP";
-    }
 
+        document.getElementById('btn-principal').textContent = "STOP";
+        document.getElementById('btn-principal').classList = "btn btn-warning";
+    }
 }
 
 // PRINCIPAL BUTTOM

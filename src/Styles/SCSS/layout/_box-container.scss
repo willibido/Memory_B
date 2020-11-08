@@ -11,5 +11,10 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+
+        .start-sing {
+            animation: blink 1.5s  infinite;
+            font-size: 1.5em;
+        }
     }
 }

@@ -3,7 +3,7 @@ aside.main-container {
     width: 24%;
     height: 100%;
     background-color: $light-green;
-    margin-right: 40px;
+    margin-left: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,8 +54,9 @@ aside.main-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: $acid-green;
-            color: $dark-green;
+            background-color: $dark-green;
+            color: $acid-green;
+            border: $border-green;
             border-radius: 12px;
             padding: 15px 30px;
             height: 100%;
@@ -79,7 +80,7 @@ aside.main-container {
 
             .divider {
                 height: 60%;
-                border-left: 2px dashed $dark-green;
+                border-left: 2px dashed $acid-green;
             }
 
             .time-wrapp {
@@ -128,8 +129,7 @@ aside.main-container {
                 width: 100%;
                 display: flex;
                 padding: 0px 6px;
-                
-
+            
                 .stat {
                     width: 100%;
                     display: flex;
@@ -152,12 +152,33 @@ aside.main-container {
                         background-color: $grey;
                         padding: 10px 20px;
                         font-size: 1.1em;
-
+                        
                     }
                     
                     span.equal-sing {
                         margin: 5px 0px;
                         font-size: 1.8em;
+                    }
+                    
+                    .outline {
+                        &.stage-mark {
+                            background-color: $acid-green;
+                            color: $dark-green;
+                        }
+                    }
+
+                    .painted {
+                        &.stage-mark {
+                            background-color: $yellow;
+                            color: $dark-green;
+                        }
+                    }
+
+                    .invisibles {
+                        &.stage-mark {
+                            background-color: $acid-blue;
+                            color: $dark-green;
+                        }
                     }
                 }
             }
