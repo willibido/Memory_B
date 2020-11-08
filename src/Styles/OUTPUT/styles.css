@@ -112,12 +112,28 @@ aside.main-container header .logo-wrapper .version {
   font-size: 0.8em;
   opacity: 0.6;
 }
-aside.main-container .clock-container {
+aside.main-container .tabs-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+aside.main-container .tabs-container .active {
+  height: 100%;
+}
+aside.main-container .tabs-container .home-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+aside.main-container .tabs-container .home-content .clock-container {
   width: 100%;
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   padding: 15px;
 }
-aside.main-container .clock-container .clock {
+aside.main-container .tabs-container .home-content .clock-container .clock {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -128,38 +144,40 @@ aside.main-container .clock-container .clock {
   padding: 15px 30px;
   height: 100%;
 }
-aside.main-container .clock-container .clock .clock-title {
+aside.main-container .tabs-container .home-content .clock-container .clock .clock-title {
   display: flex;
   align-items: center;
   font-size: 0.9em;
   max-width: 120px;
 }
-aside.main-container .clock-container .clock .clock-title p {
+aside.main-container .tabs-container .home-content .clock-container .clock .clock-title p {
   width: 100%;
   word-break: break-word;
 }
-aside.main-container .clock-container .clock .clock-title i {
+aside.main-container .tabs-container .home-content .clock-container .clock .clock-title i {
   font-size: 1.4em;
   margin-right: 20px;
 }
-aside.main-container .clock-container .clock .divider {
+aside.main-container .tabs-container .home-content .clock-container .clock .divider {
   height: 60%;
   border-left: 2px dashed #07E423;
 }
-aside.main-container .clock-container .clock .time-wrapp {
+aside.main-container .tabs-container .home-content .clock-container .clock .time-wrapp {
   font-size: 250%;
 }
-aside.main-container .match-table-container {
+aside.main-container .tabs-container .home-content .match-table-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 95%;
 }
-aside.main-container .match-table-container h2 {
+aside.main-container .tabs-container .home-content .match-table-container h2 {
   font-size: 1.1em;
   margin: 25px 0;
   align-self: center;
 }
-aside.main-container .match-table-container .table {
+aside.main-container .tabs-container .home-content .match-table-container .table {
   border-radius: 12px;
   width: 100%;
   display: flex;
@@ -167,39 +185,39 @@ aside.main-container .match-table-container .table {
   background-color: #142112;
   border: 1px solid #07E423;
 }
-aside.main-container .match-table-container .table .stage-title {
+aside.main-container .tabs-container .home-content .match-table-container .table .stage-title {
   display: flex;
   padding: 15px 0;
   font-size: 1.5em;
   justify-content: center;
   border-bottom: 1px solid #07E423;
 }
-aside.main-container .match-table-container .table .stage-title p {
+aside.main-container .tabs-container .home-content .match-table-container .table .stage-title p {
   margin: 0 20px;
 }
-aside.main-container .match-table-container .table .stage-title span:nth-child(3) {
+aside.main-container .tabs-container .home-content .match-table-container .table .stage-title span:nth-child(3) {
   margin-right: 20px;
 }
-aside.main-container .match-table-container .table .stats-wrapper {
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper {
   width: 100%;
   display: flex;
   padding: 0px 6px;
 }
-aside.main-container .match-table-container .table .stats-wrapper .stat {
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-aside.main-container .match-table-container .table .stats-wrapper .stat .title {
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat .title {
   font-size: 0.9em;
   color: #DCDCDC;
   margin: 1.5em 0;
 }
-aside.main-container .match-table-container .table .stats-wrapper .stat .outline,
-aside.main-container .match-table-container .table .stats-wrapper .stat .painted,
-aside.main-container .match-table-container .table .stats-wrapper .stat .invisibles {
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat .outline,
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat .painted,
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat .invisibles {
   width: 97%;
   display: flex;
   justify-content: space-between;
@@ -207,34 +225,43 @@ aside.main-container .match-table-container .table .stats-wrapper .stat .invisib
   padding: 10px 20px;
   font-size: 1.1em;
 }
-aside.main-container .match-table-container .table .stats-wrapper .stat span.equal-sing {
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat span.equal-sing {
   margin: 5px 0px;
   font-size: 1.8em;
 }
-aside.main-container .match-table-container .table .stats-wrapper .stat .outline.stage-mark {
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat .outline.stage-mark {
   background-color: #07E423;
   color: #142112;
 }
-aside.main-container .match-table-container .table .stats-wrapper .stat .painted.stage-mark {
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat .painted.stage-mark {
   background-color: #FFFF7B;
   color: #142112;
 }
-aside.main-container .match-table-container .table .stats-wrapper .stat .invisibles.stage-mark {
+aside.main-container .tabs-container .home-content .match-table-container .table .stats-wrapper .stat .invisibles.stage-mark {
   background-color: #3EEDFF;
   color: #142112;
 }
-aside.main-container .match-table-container .table h3 {
+aside.main-container .tabs-container .home-content .match-table-container .table h3 {
   font-size: 0.9em;
   color: #DCDCDC;
   margin: 1.5em 0;
   text-align: center;
 }
-aside.main-container .btn-wrapper {
+aside.main-container .tabs-container .home-content .btn-wrapper {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   width: 100%;
   height: 100%;
+}
+aside.main-container [data-tab-content] {
+  display: none;
+}
+aside.main-container .active[data-tab-content] {
+  display: block;
+}
+aside.main-container .tab-content {
+  padding: 20px;
 }
 
 .container {
@@ -324,6 +351,56 @@ aside.main-container .btn-wrapper {
     transform: translateX(0px);
   }
 }
+.info-content h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.score-content h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.score-content .table-header {
+  color: #fff;
+  width: 100%;
+  border: 1px solid #07E423;
+}
+.score-content .table-header thead {
+  width: 100%;
+}
+.score-content .table-header thead tr {
+  width: 100%;
+}
+.score-content .table-header thead tr th {
+  width: 50%;
+  padding: 10px;
+  background: #07E423;
+  color: #142112;
+}
+.score-content .table-container {
+  overflow: auto;
+  max-height: 550px;
+  border: 1px solid #07E423;
+}
+.score-content .table-container table {
+  width: 100%;
+}
+.score-content .table-container table tbody {
+  width: 100%;
+  text-align: center;
+}
+.score-content .table-container table tbody tr {
+  width: 100%;
+}
+.score-content .table-container table tbody tr td {
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #07E423;
+  color: #fff;
+}
+
 .btn {
   width: 90%;
   height: 50px;

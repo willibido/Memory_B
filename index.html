@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/d68c519328.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="src/Styles/OUTPUT/styles.css">
+    <script src="src/JS/tabs.js" defer></script>
     <title>MEMORY - GAME</title>
 </head>
 <body>
@@ -26,82 +27,119 @@
                 </div>
 
                 <nav class="navegation">
-                    <a href="">HOME</a>
-                    <a href="">SCORES</a>
-                    <a href="">INFO</a>
+                    <a href="#home" data-tab-target="#home">HOME</a>
+                    <a href="#scores" data-tab-target="#scores">SCORES</a>
+                    <a href="#info" data-tab-target="#info">INFO</a>
                 </nav>
             </header>
 
-            <div class="clock-container">
-                <div class="clock">
-                    <div class="clock-title">
-                        <i class="fas fa-stopwatch"></i>
-                        <p>TIME REMAINING</p>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="time-wrapp">
-                        <span class="time" id="time-minutes">00</span><span>:</span><span class="time" id="time-seconds">00</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="match-table-container">
-                <h2 class="title">MATCH TABLE</h2>
-                <div class="table">
-                    <div class="stage-title">
-                        <span>></span>
-                        <p>STAGE</p>
-                        <span id="stage-indicator">00</span>
-                        <span><</span>
-                    </div>
-
-                    <div class="stats-wrapper">
-                        <div class="stat">
-                            <h3 class="title">Outline</h3>
-                            <div class="outline">
-                                <i class="far fa-square"></i>
-                                <span id="outline-count-stage">0</span>
-                            </div>
-                            <span class="equal-sing">=</span>
-                            <div class="outline stage-mark">
-                                <i class="far fa-square"></i>
-                                <span id="outline-count-selected">0</span>
+            <div class="tabs-container">
+                <section id="home" class="active" data-tab-content>
+                    <div class="home-content">
+                        <div class="clock-container">
+                            <div class="clock">
+                                <div class="clock-title">
+                                    <i class="fas fa-stopwatch"></i>
+                                    <p>TIME REMAINING</p>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="time-wrapp">
+                                    <span class="time" id="time-minutes">00</span><span>:</span><span class="time" id="time-seconds">00</span>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="stat">
-                            <h3 class="title">Painted</h3>
-                            <div class="painted">
-                                <i class="fas fa-fill-drip"></i>
-                                <span id="painted-count-stage">0</span>
-                            </div>
-                            <span class="equal-sing">=</span>
-                            <div class="painted stage-mark">
-                                <i class="fas fa-fill-drip"></i>
-                                <span id="painted-count-selected">0</span>
+            
+                        <div class="match-table-container">
+                            <h2 class="title">MATCH TABLE</h2>
+                            <div class="table">
+                                <div class="stage-title">
+                                    <span>></span>
+                                    <p>STAGE</p>
+                                    <span id="stage-indicator">00</span>
+                                    <span><</span>
+                                </div>
+            
+                                <div class="stats-wrapper">
+                                    <div class="stat">
+                                        <h3 class="title">Outline</h3>
+                                        <div class="outline">
+                                            <i class="far fa-square"></i>
+                                            <span id="outline-count-stage">0</span>
+                                        </div>
+                                        <span class="equal-sing">=</span>
+                                        <div class="outline stage-mark">
+                                            <i class="far fa-square"></i>
+                                            <span id="outline-count-selected">0</span>
+                                        </div>
+                                    </div>
+            
+                                    <div class="stat">
+                                        <h3 class="title">Painted</h3>
+                                        <div class="painted">
+                                            <i class="fas fa-fill-drip"></i>
+                                            <span id="painted-count-stage">0</span>
+                                        </div>
+                                        <span class="equal-sing">=</span>
+                                        <div class="painted stage-mark">
+                                            <i class="fas fa-fill-drip"></i>
+                                            <span id="painted-count-selected">0</span>
+                                        </div>
+                                    </div>
+            
+                                    <div class="stat">
+                                        <h3 class="title">Invisibles</h3>
+                                        <div class="invisibles">
+                                            <i class="fas fa-eye-slash"></i>
+                                            <span id="invisibles-count-stage">0</span>
+                                        </div>
+                                        <span class="equal-sing">=</span>
+                                        <div class="invisibles stage-mark">
+                                            <i class="fas fa-eye-slash"></i>
+                                            <span id="invisibles-count-selected">0</span>
+                                        </div>
+                                    </div>    
+                                </div>
+            
+                                <h3>Selected</h3>
                             </div>
                         </div>
-
-                        <div class="stat">
-                            <h3 class="title">Invisibles</h3>
-                            <div class="invisibles">
-                                <i class="fas fa-eye-slash"></i>
-                                <span id="invisibles-count-stage">0</span>
-                            </div>
-                            <span class="equal-sing">=</span>
-                            <div class="invisibles stage-mark">
-                                <i class="fas fa-eye-slash"></i>
-                                <span id="invisibles-count-selected">0</span>
-                            </div>
-                        </div>    
+            
+                        <div class="btn-wrapper">
+                            <button class="btn" id="btn-principal">START</button>
+                        </div>
                     </div>
+                </section>
 
-                    <h3>Selected</h3>
-                </div>
-            </div>
+                <section id="scores" data-tab-content>
+                    <div class="score-content tab-content">
+                        <h2>Scores</h2>
+                        <table class="table-header">
+                            <thead>
+                                <tr>
+                                    <th>STAGE</th>
+                                    <th>TIME</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="table-container">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>3s</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
 
-            <div class="btn-wrapper">
-                <button class="btn" id="btn-principal">START</button>
+                <section id="info" data-tab-content>
+                    <div class="info-content tab-content">
+                        <h2>Info</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius velit dicta harum dolore ut fugit, ullam ea qui distinctio molestiae reprehenderit? In architecto aut fugit veritatis sapiente culpa placeat commodi?</p>
+                    </div>
+                </section>
             </div>
         </aside>
 
