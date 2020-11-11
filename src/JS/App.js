@@ -237,6 +237,19 @@ class UI {
             }, 500)
         });
     }
+
+    // Funcion para mostrar el puntaje en pantalla
+    scores(stage, time){
+        const table = document.querySelector('#table');
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${stage}</td>
+            <td>${time}s</td>
+        `;
+
+        table.appendChild(row);
+    }
 }
 
 // ---- WORKING WITH THE TIME ----//
@@ -424,7 +437,11 @@ const matchChecker = () => {
     // Si las cantidades de las cajas son iguales (la condicion es verdadera) 
     if (outlineMatch && paintedMatch && invisiblesMatch) {
         const ui = new UI; // Se llama la clase UI para mostrar el puntaje y el mensaje de reto completado
+        
         console.log("MATCH! YOU WIN BITCH", `STAGE: ${challengeIndex + 1}` + " - TIME: " + Math.abs(Number(secondsIndicator.innerText) - stage[challengeIndex].time), "SECONDS");
+        
+        ui.scores(challengeIndex + 1, Math.abs(Number(secondsIndicator.innerText) - stage[challengeIndex].time));
+
         stopChallengeTime();
         ui.modalWinChallenge();
     }

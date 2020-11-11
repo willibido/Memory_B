@@ -219,16 +219,4 @@ aside.main-container {
         }
 
     }
-
-    [data-tab-content] {
-        display: none;
-    }
-
-    .active[data-tab-content] {
-        display: block;
-    }
-
-    .tab-content {
-        padding: 20px;
-    }
 }

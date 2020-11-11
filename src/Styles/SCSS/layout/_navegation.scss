@@ -40,6 +40,23 @@
     }
 }
 
+[data-tab-content] {
+    display: none;
+}
+
+.tab.active {
+    color: $acid-green;
+    opacity: 1;
+}
+
+.active[data-tab-content] {
+    display: block;
+}
+
+.tab-content {
+    padding: 20px;
+}
+
 @keyframes show {
     0% {
         transform: translateX( -5px);
