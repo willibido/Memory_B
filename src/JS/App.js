@@ -1,4 +1,4 @@
-// GLOBAL CONST AND VARIABLES
+// GLOBAL VARIABLES
 
 const boxWrapper = document.getElementById('box-wrapper');
 
@@ -50,7 +50,6 @@ stage = [
 ];
 
 // ---- UI MANIPULATION ---- //
-// CLASS FOR SHOW AND MODIFY UI ELEMENTS
 class UI { 
     addBox(box, boxContainer){
         boxContainer.appendChild(box);
@@ -110,15 +109,15 @@ class UI {
     /* Estructura basica de un modal
     
     mainModalContainer.innerHTML = `
-        <div class="modal" id="** ESPESIFICAR ID **">
-            <div class="modal-component" id="** ESPESIFICAR ID **">
-                // ** CONTENIDO DEL MODAL **
+        <div class="modal" id="** ELELEMENT ID  **">
+            <div class="modal-component" id="** ELELEMENT ID  **">
+                // ** MODAL CONTENT **
             </div>
         </div>
     `;
 
-    Animaciones: 
-    .hide // Aplicar solo al mainModalContainer
+    Animations: 
+    .hide 
     .fadein 
     .fadeout
         
@@ -253,7 +252,8 @@ class UI {
 }
 
 // ---- WORKING WITH THE TIME ----//
-// F1- START TIME COUNTER
+
+// START TIME COUNTER
 const timeCounter = (elementInterval) => {
     let startTime = 3;
     let initialCounterIndicator = document.querySelector('.initial-time-indicador');
@@ -285,7 +285,7 @@ const timeCounter = (elementInterval) => {
     }, 1000);
 }
 
-// F2- CHALLENGE TIME
+// CHALLENGE TIME
 const challengeTime = (elementInterval, time) => {
     const ui = new UI;
     
@@ -407,7 +407,7 @@ class Box extends UI {
     }
 }
 
-// FUNCTION FOR CHECK A MATCH =================================================================
+// FUNCTION FOR CHECK A MATCH
 const matchChecker = () => {
     let outlineMatch, paintedMatch, invisiblesMatch;
     // Comprueba si la cantidad de cajas con el estilo de linea (outline) es igual a la cantidad del reto 
